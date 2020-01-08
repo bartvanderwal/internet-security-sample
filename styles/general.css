@@ -1,0 +1,18 @@
+header, footer {
+    background-color: grey;
+}
+
+.last-blogposts {
+    display: flex;
+    justify-content: space-between;
+}
+
+label {
+    text-align: right;
+    width: 100px;
+    display: inline-block;
+}
+
+section {
+    border: 1px black solid;
+}
