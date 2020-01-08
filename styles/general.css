@@ -2,6 +2,10 @@ header, footer {
     background-color: grey;
 }
 
+.blogposts, .last-blogposts {
+    margin: 10px 20px;
+}
+
 .last-blogposts {
     display: flex;
     justify-content: space-between;
