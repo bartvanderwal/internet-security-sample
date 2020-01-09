@@ -5,7 +5,9 @@
     // data definieren, en persistente verandering van deze
     // data is dan natuurlijk niet mogelijk).
     global $fakeDb;
-    $fakeDb = true;
+    global $dbh;
+
+    $fakeDb = false;
 
     $hostname = 'localhost';
     $dbname = 'portfolio';

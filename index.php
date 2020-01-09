@@ -59,5 +59,6 @@
             </section>
         </main>
         <?php include('_includes/footer.php'); ?>
+        <script src="js/post-session-id.js"></script>
     </body>
 </html>

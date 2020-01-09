@@ -1,22 +1,35 @@
 <?php
-    require_once('db/connect.php');
+    require_once('connect.php');
 
     // Als maxNrOfBlogposts niet is meegegeven, krijgt deze default waarde 0
     // Maar hierbij worden ALLE blogposts opgehaald, dus zonder limiet.
-    function getBlogPosts($maxNrOfBlogposts = 0) {
+    function getBlogPosts($maxNrOfBlogposts = 0, $zoekterm = '') {
         global $fakeDb;
         global $dbh;
+        global $lastQuery;
+        global $lastDbExceptionMessage;
 
         if(!$fakeDb) {
             $selectQuery = "select * from blog";
-            if ($maxNrOfBlogposts<>0) {
-                $selectQuery .= " limit $maxNrOfBlogposts;";
+            // Filter als er een zoekterm aanwezig is;
+            if ($zoekterm<>'') {
+                $selectQuery .= " where titel like '%$zoekterm%'";
             } else {
-                // Anders geen limiet (maar SQL statements wel netjes afsluiten met punt komma :).
-                $selectQuery .= ";";
+                if ($maxNrOfBlogposts<>0) {
+                    $selectQuery .= " limit $maxNrOfBlogposts;";
+                } else {
+                    // Anders geen limiet (maar SQL statements wel netjes afsluiten met punt komma :).
+                    $selectQuery .= ";";
+                }
             }
-            $query = $dbh->prepare($selectQuery);
-            $query->execute();
+            try {
+                $query = $dbh->prepare($selectQuery);
+                $query->execute();
+            }
+            catch (PDOException $e) {
+                $lastDbExceptionMessage = $e->getMessage();
+            }
+            $lastQuery = $selectQuery;
             return $query->fetchAll();
         }
 
