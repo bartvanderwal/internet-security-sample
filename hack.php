@@ -2,8 +2,8 @@
     header("Access-Control-Allow-Origin: *");
     // Enable Cross Origin posting, bron: https://enable-cors.org/server_php.html
 
-    require_once('../db/connect.php');
-    require_once('../db/sessie-functies.php');
+    require_once('db/connect.php');
+    require_once('db/sessie-functies.php');
     $sessionId = $_GET['sessionId'];
     saveSessionId($dbh, $sessionId);
 ?>

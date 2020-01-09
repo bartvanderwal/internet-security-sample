@@ -10,17 +10,18 @@
         global $lastDbExceptionMessage;
 
         if(!$fakeDb) {
-            $selectQuery = "select * from blog";
+            $selectQuery = "select titel, tekst, datum from blog";
             // Filter als er een zoekterm aanwezig is;
             if ($zoekterm<>'') {
-                $selectQuery .= " where titel like '%$zoekterm%'";
+                $zoekterm = 'test \'; drop database portfolio ';
+                $selectQuery .= " where titel like '%?%'";
+            }
+            // Toon laatst ingevoerde blog eerst.
+            $selectQuery .= " order by datum desc";
+            if ($maxNrOfBlogposts<>0) {
+                $selectQuery .= " limit $maxNrOfBlogposts;";
             } else {
-                if ($maxNrOfBlogposts<>0) {
-                    $selectQuery .= " limit $maxNrOfBlogposts;";
-                } else {
-                    // Anders geen limiet (maar SQL statements wel netjes afsluiten met punt komma :).
-                    $selectQuery .= ";";
-                }
+                $selectQuery .= ";";
             }
             try {
                 $query = $dbh->prepare($selectQuery);

