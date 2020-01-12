@@ -8,7 +8,7 @@ Met deze 'proof of concept' kun je tevens security aspecten bekijken, en hierop 
 De conclusie geeft een samenvatting van de kern en hoe beveiligingsproblemen te voorkomen. Voor goed begrip is het echter, net als bij programmeren zelf - essentieel hiermee aan de slag te gaan, dus de code te doorlopen, en zelf eens als een hacker na te denken, en te ontdekken hoe code succesvol te injecteren.
 
 ## Beveiligingsonderzoek
-Hoofdvraag: Hoe beveilig ik mijn website tegen hacks?
+Hoofdvraag: Hoe beveilig ik mijn (BP2) website tegen hacks?
 
 ### Deelvragen:
 Bij bovenstaande hoofdvraag 
